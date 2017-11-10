@@ -1,4 +1,4 @@
-package com.stackroute.deploymentdashboard.usermanagement.configuration;
+/*package com.stackroute.deploymentdashboard.usermanagement.configuration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,3 +37,4 @@ public class KafkaProducerConfig {
         return new KafkaTemplate<>(producerFactory());
     }
 }
+*/

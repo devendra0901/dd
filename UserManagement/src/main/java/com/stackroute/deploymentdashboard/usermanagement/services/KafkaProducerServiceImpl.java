@@ -1,4 +1,4 @@
-package com.stackroute.deploymentdashboard.usermanagement.services;
+/*package com.stackroute.deploymentdashboard.usermanagement.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,3 +24,4 @@ public class KafkaProducerServiceImpl implements KafkaProducerService {
 	}
 
 }
+*/

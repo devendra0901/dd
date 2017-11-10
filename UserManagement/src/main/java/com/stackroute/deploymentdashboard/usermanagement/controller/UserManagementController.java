@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stackroute.deploymentdashboard.usermanagement.Exceptions.*;
 import com.stackroute.deploymentdashboard.usermanagement.domains.UserModel;
-import com.stackroute.deploymentdashboard.usermanagement.services.KafkaProducerService;
 import com.stackroute.deploymentdashboard.usermanagement.services.UserManagementService;
 
 import io.swagger.annotations.Api;
@@ -36,8 +35,8 @@ public class UserManagementController {
 	@Autowired
 	private UserManagementService userService;
 
-	@Autowired
-	private KafkaProducerService kafkaProd;
+	/*@Autowired
+	private KafkaProducerService kafkaProd;*/
 
 	@ApiOperation(value = "View a list of available projects", response = Iterable.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved"),
@@ -73,7 +72,7 @@ public class UserManagementController {
 			} else if (!emailValidation(newData.getBody().getEmailId())) {
 				return new ResponseEntity<String>("EmailId not valid", HttpStatus.PARTIAL_CONTENT);
 			} else {
-				this.kafkaProd.produce(newData.getBody());
+				
 				this.userService.addUser(newData.getBody());
 				return new ResponseEntity<String>("User Added Successfully", HttpStatus.CREATED);
 			}
@@ -95,7 +94,7 @@ public class UserManagementController {
 			} else if (!emailValidation(updateData.getBody().getEmailId())) {
 				return new ResponseEntity<String>("EmailId not valid", HttpStatus.PARTIAL_CONTENT);
 			} else {
-				this.kafkaProd.produce(updateData.getBody());
+				//this.kafkaProd.produce(updateData.getBody());
 				this.userService.update(updateData.getBody());
 				return new ResponseEntity<String>("User Updated Successfully", HttpStatus.OK);
 			}

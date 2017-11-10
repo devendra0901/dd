@@ -1,0 +1,34 @@
+version: "2.1"
+services:
+  registry:
+    image: registry-image
+    build: registry
+    ports:
+      - 8761:8761
+
+  config:
+    environment:
+      REGISTRY_URL: registry
+    image: config-image
+    build: config
+    restart: always
+    ports:
+      - 8890:8890
+
+  user-service:
+    environment:
+      MONGO_URI: user-mongo
+      REGISTRY_URL: registry
+      CONFIG_URL: config
+    depends_on:
+      config:
+        condition: service_healthy
+    image: user-image
+    build: UserManagement
+    ports: 
+      - 8233:8233
+ 
+  user-mongo:
+    image: mongo
+    ports:
+      - 27088:27017

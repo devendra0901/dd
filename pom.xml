@@ -147,8 +147,8 @@
 	<!-- TODO: add modules here -->
     <modules>
     		<module>api-gateway</module>
-    		<module>discovery-registry</module>
-    		<module>config-server</module>
+    		<module>registry</module>
+    		<module>config</module>
     		<module>ProjectManagement</module>
     		<module>WorkflowEngineService</module>
     		<module>jenkinsManualService</module>
